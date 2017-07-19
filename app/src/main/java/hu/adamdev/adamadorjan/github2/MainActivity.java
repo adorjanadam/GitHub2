@@ -3,6 +3,7 @@ package hu.adamdev.adamadorjan.github2;
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,11 +16,14 @@ public class MainActivity extends AppCompatActivity {
   private static final int SNACKBAR_MODE_ERROR = 0;
   EditText editText;
   Button button;
+  TextInputLayout textInputLayout;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
+
+    textInputLayout= (TextInputLayout) findViewById(R.id.textInputLayout);
     editText = (EditText) findViewById(R.id.editText);
     button = (Button) findViewById(R.id.button);
     button.setOnClickListener(new View.OnClickListener() {
@@ -33,11 +37,11 @@ public class MainActivity extends AppCompatActivity {
     if (!editText.getText().toString().equals("")) {
       showSnackbar(editText.getText().toString(), button, SNACKBAR_MODE_MESSAGE);
       editText.setText("");
-      editText.setError(null);
+      textInputLayout.setError(null);
 
     } else {
       showSnackbar("Enter a message!", button, SNACKBAR_MODE_ERROR);
-      editText.setError("Enter a message!");
+      textInputLayout.setError("Enter a message!");
     }
   }
 
