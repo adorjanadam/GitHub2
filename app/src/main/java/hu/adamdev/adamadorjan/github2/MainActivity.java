@@ -24,18 +24,21 @@ public class MainActivity extends AppCompatActivity {
     button = (Button) findViewById(R.id.button);
     button.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View view) {
-
-        if (!editText.getText().toString().equals("")) {
-          showSnackbar(editText.getText().toString(), button, SNACKBAR_MODE_MESSAGE);
-          editText.setText("");
-          editText.setError(null);
-
-        } else {
-          showSnackbar("Enter a message!", button, SNACKBAR_MODE_ERROR);
-          editText.setError("Enter a message!");
-        }
+        buttonPressedEvent();
       }
     });
+  }
+
+  private void buttonPressedEvent() {
+    if (!editText.getText().toString().equals("")) {
+      showSnackbar(editText.getText().toString(), button, SNACKBAR_MODE_MESSAGE);
+      editText.setText("");
+      editText.setError(null);
+
+    } else {
+      showSnackbar("Enter a message!", button, SNACKBAR_MODE_ERROR);
+      editText.setError("Enter a message!");
+    }
   }
 
   private void showSnackbar(String text, View view, int mode) {
