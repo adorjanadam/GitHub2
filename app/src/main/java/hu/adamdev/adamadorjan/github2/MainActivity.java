@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void buttonPressedEvent() {
-    if (editText.getText().toString().length()>5) {
+    if (editText.getText().toString().length()>=5) {
       showSnackbar(editText.getText().toString(), button, SNACKBAR_MODE_MESSAGE);
       editText.setText("");
       editText.setError(null);
