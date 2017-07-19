@@ -10,10 +10,24 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="hu.adamdev.adamadorjan.github2.MainActivity"
     >
-
-  <TextView
+  <EditText
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Hello World!"
+      android:inputType="textPersonName"
+      android:ems="10"
+      android:layout_alignParentTop="true"
+      android:layout_alignParentStart="true"
+      android:id="@+id/editText"
+      android:hint="message"
+      android:layout_alignParentEnd="true"
+      />
+  <Button
+      android:text="Show Snackbar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/editText"
+      android:layout_alignParentStart="true"
+      android:id="@+id/button"
+      android:layout_alignParentEnd="true"
       />
 </RelativeLayout>
