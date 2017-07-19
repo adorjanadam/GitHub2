@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
   private static final int SNACKBAR_MODE_MESSAGE = 1;
   private static final int SNACKBAR_MODE_ERROR = 0;
+  private static final int SNACKBAR_MODE_WARNING=2;
   EditText editText;
   Button button;
 
@@ -30,12 +31,17 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void buttonPressedEvent() {
-    if (!editText.getText().toString().equals("")) {
+    if (editText.getText().toString().length()>=5) {
       showSnackbar(editText.getText().toString(), button, SNACKBAR_MODE_MESSAGE);
       editText.setText("");
       editText.setError(null);
-
-    } else {
+    }
+    else if(editText.getText().toString().length()>0)
+    {
+      showSnackbar("Too short message", button, SNACKBAR_MODE_WARNING);
+      editText.setError("Min length: 5");
+    } else
+     {
       showSnackbar("Enter a message!", button, SNACKBAR_MODE_ERROR);
       editText.setError("Enter a message!");
     }
@@ -49,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
         break;
       case SNACKBAR_MODE_MESSAGE:
         color = Color.GREEN;
+        break;
+      case SNACKBAR_MODE_WARNING:
+        color = Color.YELLOW;
         break;
       default:
         color = Color.WHITE;
