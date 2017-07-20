@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         color = Color.YELLOW;
         break;
       default:
-        color = Color.WHITE;
+        color = Color.BLUE;
         break;
     }
 
