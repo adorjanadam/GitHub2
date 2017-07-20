@@ -13,37 +13,62 @@ public class MainActivity extends AppCompatActivity {
 
   private static final int SNACKBAR_MODE_MESSAGE = 1;
   private static final int SNACKBAR_MODE_ERROR = 0;
-  private static final int SNACKBAR_MODE_WARNING=2;
+  private static final int SNACKBAR_MODE_WARNING = 2;
   EditText editText;
-  Button button;
+  Button buttonMessage;
+  Button buttonWarning;
+  Button buttonError;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
     editText = (EditText) findViewById(R.id.editText);
-    button = (Button) findViewById(R.id.button);
-    button.setOnClickListener(new View.OnClickListener() {
+    buttonMessage = (Button) findViewById(R.id.button);
+    buttonMessage.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View view) {
-        buttonPressedEvent();
+        buttonPressedEvent(SNACKBAR_MODE_MESSAGE);
+      }
+    });
+
+    buttonWarning = (Button) findViewById(R.id.button2);
+    buttonWarning.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View view) {
+        buttonPressedEvent(SNACKBAR_MODE_WARNING);
+      }
+    });
+
+    buttonError = (Button) findViewById(R.id.button3);
+    buttonError.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View view) {
+        buttonPressedEvent(SNACKBAR_MODE_ERROR);
       }
     });
   }
 
-  private void buttonPressedEvent() {
-    if (editText.getText().toString().length()>=5) {
-      showSnackbar(editText.getText().toString(), button, SNACKBAR_MODE_MESSAGE);
-      editText.setText("");
-      editText.setError(null);
-    }
-    else if(editText.getText().toString().length()>0)
-    {
-      showSnackbar("Too short message", button, SNACKBAR_MODE_WARNING);
-      editText.setError("Min length: 5");
-    } else
-     {
-      showSnackbar("Enter a message!", button, SNACKBAR_MODE_ERROR);
-      editText.setError("Enter a message!");
+  private void buttonPressedEvent(int mode) {
+    switch (mode) {
+      case SNACKBAR_MODE_WARNING:
+        showSnackbar("Warning message", buttonMessage, SNACKBAR_MODE_WARNING);
+        break;
+      case SNACKBAR_MODE_ERROR:
+        showSnackbar("Error message", buttonMessage, SNACKBAR_MODE_ERROR);
+        break;
+
+      default: {
+        if (editText.getText().toString().length() >= 5) {
+          showSnackbar(editText.getText().toString(), buttonMessage, SNACKBAR_MODE_MESSAGE);
+          editText.setText("");
+          editText.setError(null);
+        } else if (editText.getText().toString().length() > 0) {
+          showSnackbar("Too short message", buttonMessage, SNACKBAR_MODE_WARNING);
+          editText.setError("Min length: 5");
+        } else {
+          showSnackbar("Enter a message!", buttonMessage, SNACKBAR_MODE_ERROR);
+          editText.setError("Enter a message!");
+        }
+      }
+      break;
     }
   }
 
@@ -68,10 +93,8 @@ public class MainActivity extends AppCompatActivity {
     snackbar.setAction("Ok", new View.OnClickListener() {
       @Override public void onClick(View view) {
         snackbar.dismiss();
-
       }
     });
     snackbar.setActionTextColor(color).show();
-
   }
 }
