@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,14 +16,14 @@ public class MainActivity extends AppCompatActivity {
   private static final int SNACKBAR_MODE_ERROR = 0;
   private static final int SNACKBAR_MODE_WARNING=2;
   EditText editText;
-  Button button;
+  ImageButton button;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
     editText = (EditText) findViewById(R.id.editText);
-    button = (Button) findViewById(R.id.button);
+    button = (ImageButton) findViewById(R.id.button);
     button.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View view) {
         buttonPressedEvent();
