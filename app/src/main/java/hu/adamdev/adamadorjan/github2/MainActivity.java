@@ -3,6 +3,7 @@ package hu.adamdev.adamadorjan.github2;
 import android.graphics.Color;
 import android.support.annotation.ColorInt;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
   private static final int SNACKBAR_MODE_MESSAGE = 1;
   private static final int SNACKBAR_MODE_ERROR = 0;
   private static final int SNACKBAR_MODE_WARNING = 2;
+  TextInputLayout textInputLayout;
   EditText editText;
   EditText editTextButtonText;
     ImageButton buttonMessage;
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
+
+    textInputLayout= (TextInputLayout) findViewById(R.id.textInputLayout);
     editText = (EditText) findViewById(R.id.editText);
     editTextButtonText = (EditText) findViewById(R.id.editTextButtonText);
 
@@ -63,13 +67,13 @@ public class MainActivity extends AppCompatActivity {
         if (editText.getText().toString().length() >= 5) {
           showSnackbar(editText.getText().toString(), buttonMessage, SNACKBAR_MODE_MESSAGE);
           editText.setText("");
-          editText.setError(null);
+          textInputLayout.setError(null);
         } else if (editText.getText().toString().length() > 0) {
           showSnackbar("Too short message", buttonMessage, SNACKBAR_MODE_WARNING);
-          editText.setError("Min length: 5");
+          textInputLayout.setError("Min length: 5");
         } else {
           showSnackbar("Enter a message!", buttonMessage, SNACKBAR_MODE_ERROR);
-          editText.setError("Enter a message!");
+          textInputLayout.setError("Enter a message!");
         }
       }
       break;
