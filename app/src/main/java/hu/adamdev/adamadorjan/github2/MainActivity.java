@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
   private static final int SNACKBAR_MODE_ERROR = 0;
   private static final int SNACKBAR_MODE_WARNING=2;
   EditText editText;
+  EditText editTextButtonText;
   Button button;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     editText = (EditText) findViewById(R.id.editText);
+    editTextButtonText = (EditText) findViewById(R.id.editTextButtonText);
+
     button = (Button) findViewById(R.id.button);
     button.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View view) {
@@ -65,7 +68,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     final Snackbar snackbar = Snackbar.make(view, text, Snackbar.LENGTH_INDEFINITE);
-    snackbar.setAction("Ok", new View.OnClickListener() {
+    String buttonText;
+    if(!editTextButtonText.getText().toString().equals(""))
+    {
+      buttonText=editTextButtonText.getText().toString();
+    }
+    else{
+      buttonText="Ok";
+    }
+    snackbar.setAction(buttonText, new View.OnClickListener() {
       @Override public void onClick(View view) {
         snackbar.dismiss();
 
