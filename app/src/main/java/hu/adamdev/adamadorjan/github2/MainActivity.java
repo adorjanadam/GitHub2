@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         if (editText.getText().toString().length() >= 5) {
           showSnackbar(editText.getText().toString(), buttonMessage, SNACKBAR_MODE_MESSAGE);
           editText.setText("");
+          editTextButtonText.setText("");
           textInputLayout.setError(null);
         } else if (editText.getText().toString().length() > 0) {
           showSnackbar("Too short message", buttonMessage, SNACKBAR_MODE_WARNING);
