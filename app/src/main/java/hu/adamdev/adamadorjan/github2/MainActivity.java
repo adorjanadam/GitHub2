@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
   TextInputLayout textInputLayout;
   EditText editText;
   EditText editTextButtonText;
-    ImageButton buttonMessage;
+  ImageButton buttonMessage;
   Button buttonWarning;
   Button buttonError;
 
@@ -27,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-
-    textInputLayout= (TextInputLayout) findViewById(R.id.textInputLayout);
+    textInputLayout = (TextInputLayout) findViewById(R.id.textInputLayout);
     editText = (EditText) findViewById(R.id.editText);
     editTextButtonText = (EditText) findViewById(R.id.editTextButtonText);
 
@@ -100,17 +99,14 @@ public class MainActivity extends AppCompatActivity {
 
     final Snackbar snackbar = Snackbar.make(view, text, Snackbar.LENGTH_INDEFINITE);
     String buttonText;
-    if(!editTextButtonText.getText().toString().equals(""))
-    {
-      buttonText=editTextButtonText.getText().toString();
-    }
-    else{
-      buttonText="Ok";
+    if (!editTextButtonText.getText().toString().equals("")) {
+      buttonText = editTextButtonText.getText().toString();
+    } else {
+      buttonText = "Ok";
     }
     snackbar.setAction(buttonText, new View.OnClickListener() {
       @Override public void onClick(View view) {
         snackbar.dismiss();
-
       }
     });
     snackbar.setActionTextColor(color).show();
