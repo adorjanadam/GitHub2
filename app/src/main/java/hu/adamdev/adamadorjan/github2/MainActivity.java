@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     final Snackbar snackbar = Snackbar.make(view, text, Snackbar.LENGTH_INDEFINITE);
-    snackbar.setAction("Ok", new View.OnClickListener() {
+     snackbar.setAction("Ok", new View.OnClickListener() {
       @Override public void onClick(View view) {
         snackbar.dismiss();
       }
