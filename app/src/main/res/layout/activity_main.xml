@@ -29,15 +29,21 @@
   </android.support.design.widget.TextInputLayout>
 
 
-  <EditText
+  <android.support.design.widget.TextInputLayout
+      android:id="@+id/textInputLayoutButtonText"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:inputType="textPersonName"
-      android:ems="10"
-         android:layout_marginTop="12dp"
-      android:id="@+id/editTextButtonText"
-      android:hint="button text"
-      />
+
+      >
+
+    <EditText
+        android:id="@+id/editTextButtonText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter the button text"
+        />
+  </android.support.design.widget.TextInputLayout>
+
 
   <ImageButton
       android:layout_width="wrap_content"
