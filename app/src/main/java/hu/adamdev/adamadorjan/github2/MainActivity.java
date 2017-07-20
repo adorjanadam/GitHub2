@@ -94,9 +94,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     final Snackbar snackbar = Snackbar.make(view, text, Snackbar.LENGTH_INDEFINITE);
-     snackbar.setAction("Ok", new View.OnClickListener() {
+    String buttonText;
+    if(!editTextButtonText.getText().toString().equals(""))
+    {
+      buttonText=editTextButtonText.getText().toString();
+    }
+    else{
+      buttonText="Ok";
+    }
+    snackbar.setAction(buttonText, new View.OnClickListener() {
       @Override public void onClick(View view) {
         snackbar.dismiss();
+
       }
     });
     snackbar.setActionTextColor(color).show();
